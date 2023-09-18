@@ -1,0 +1,23 @@
+:root {
+    --bg-dark: #000000;
+    --surface-dark: #121212;
+    --surface-dark-2: #212121;
+
+    --primary-dark: #BB86FC;
+    --primary-dark-2: #9C27B0;
+
+    --bg-light: #FFFFFF;
+    --surface-light: #EBEBEB;
+    --surface-light-2: #C7C7C7;
+
+    --primary-light: #3700B3;
+    --primary-light-2: #6200EE;
+
+    --secondary: #018786;
+    --secondary-2: #03DAC6;
+}
+
+body, html {
+    background-color: var(--bg-dark);
+    box-sizing: border-box;
+}

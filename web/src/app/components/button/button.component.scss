@@ -1,0 +1,13 @@
+@import url('../../../styles.scss');
+
+.button-container{
+    display: flex;
+    button{
+        text-align: center;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: var(--primary-dark-2);
+        color: var(--bg-light);
+    }
+}

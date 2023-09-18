@@ -1,0 +1,20 @@
+::ng-deep{
+    .mat-form-field-infix{
+        background-color: var(--surface-dark-2);
+        border: none;
+        padding: 12px !important;
+        width: 100%;
+        box-shadow: 1px 1px 2px 0 #FFFFFF15;
+        border-radius: 5px;
+    }
+    .mat-form-field-label {
+        padding-left: 5px !important;
+    }
+    .mat-select-panel{
+        margin-top: 42px !important;
+        width: 100%;
+    }
+    .mat-option{
+        width: 100%;
+    }
+}

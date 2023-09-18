@@ -1,0 +1,52 @@
+<div class="home-container">
+    <div class="search-box">
+        <mat-card class="search-card">
+            <mat-card-header>
+                <mat-card-title class="search-card-title">
+                    <h1>Selecionar escola</h1>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="search-card-content">
+                <app-select-field
+                    [control]="schoolTypeControl"
+                    label="Selecione uma escola: "
+                    placeholder="Selecionar..."
+                    [listOptions]="listOptions">
+                </app-select-field>
+                <app-button
+                    buttonText="PESQUISAR">
+                </app-button>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="ranking-school-card">
+            <mat-card-header>
+                <mat-card-title class="search-card-title">
+                    <h2>Ranking Geral</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="ranking-card-content">
+                <mat-table [dataSource]="dataSource" class="school-table">
+                    <ng-container *ngFor="let column of displayedColumns;" [matColumnDef]="column" >
+                        <th mat-header-cell *matHeaderCellDef>
+                            <span>
+                                {{column}}
+                            </span>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            <span>
+                                {{element[column]}}
+                            </span> 
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </mat-table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons 
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

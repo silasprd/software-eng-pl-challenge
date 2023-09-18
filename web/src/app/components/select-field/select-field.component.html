@@ -1,0 +1,15 @@
+<div class="select-container">
+    <mat-form-field>
+        <mat-label>{{label}}</mat-label>
+
+        <mat-select [placeholder]="placeholder" [formControl]="control">
+
+            <ng-container *ngFor="let option of listOptions">
+                <mat-option [value]="option">
+                    {{option}}
+                </mat-option>
+            </ng-container>
+
+        </mat-select>
+    </mat-form-field>
+</div>

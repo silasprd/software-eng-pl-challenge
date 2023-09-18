@@ -1,0 +1,30 @@
+@import url('../../../styles.scss');
+
+.nav-bar-container{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+
+    .perfil-icon{
+        position: absolute;
+        color: var(--primary-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        top: 3%;
+        right: 3%;
+        cursor: pointer;
+    }
+}
+
+::ng-deep{
+    .mat-tab-group{
+        width: 100% !important;
+        .mat-tab-header{
+            padding-right: 100px;
+            background-color: var(--surface-dark);
+            margin-bottom: 15px;
+        }
+    }
+}

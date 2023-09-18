@@ -1,14 +1,27 @@
 @import url('../../../../styles.scss');
 
 .home-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    .trophy{
+        position: absolute !important;
+        right: 1%;
+        height: fit-content;
+        bottom: 2%;
+    }
+    .trophy img{
+
+    }
     .search-box{
         display: flex;
+        width: fit-content;
+        flex-direction: column;
         .search-card{
             background-color: var(--surface-dark);
-            width: fit-content;
             height: fit-content;
-            padding: 25px 15px;
-            margin-right: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
             .search-box{
                 h1{
                     font-size: var(--h4-size);
@@ -20,50 +33,18 @@
             margin: 0 16px !important;
         }
         .search-card-title{
-            h1, h2{
+            h1, h2, h3{
                 margin-block: 0 !important;
             }
         }
-    
-        .ranking-school-card{
-            height: 100%;
-            width: fit-content;
-            background-color: var(--surface-dark);
-            .ranking-card-content{
-                mat-table{
-                    background-color: var(--surface-dark-2);
-                    th, td{
-                        width: 100%;
-                        text-align: start;
-                        padding: 0 20px;
-                        white-space: nowrap;
-                        height: 35px !important;
-                    }
-                    tr{
-                        height: 35px !important;
-                    }
-                    td span, th span{
-                        display: flex; 
-                        height: 100%;
-                        align-items: center;
-                    }
-                    th{
-                        background-color: var(--bg-dark) !important;
-                    }
-                    td:last-child{
-                        color: var(--primary-dark);
-                    }
-                }
-                // mat-paginator{
-                //     background-color: var(--surface-dark-2) !important;
-                // }
-            }
+    }
+    .ranking-all{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin-left: 15px;
+        app-ranking-all{
+            margin-bottom: 15px;
         }
     }
-}
-
-::ng-deep{
-       .mat-paginator-container{
-            flex-wrap: unset !important;
-       }
 }

@@ -19,6 +19,9 @@ import { ButtonComponent } from './components/button/button.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './core/pages/home/home.component';
 import { ActivitiesComponent } from './core/pages/activities/activities.component';
+import { RankingAllComponent } from './components/ranking/ranking-all/ranking-all.component';
+import { RankingSchoolComponent } from './components/ranking/ranking-school/ranking-school.component';
+import { RankingTopAllComponent } from './components/ranking/ranking-top-all/ranking-top-all.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { ActivitiesComponent } from './core/pages/activities/activities.componen
     ButtonComponent,
     HomeComponent,
     ActivitiesComponent,
+    RankingAllComponent,
+    RankingSchoolComponent,
+    RankingTopAllComponent
   ],
   imports: [
     BrowserModule,

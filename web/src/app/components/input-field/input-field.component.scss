@@ -1,0 +1,34 @@
+@import url('../../../styles.scss');
+
+mat-form-field{
+  input{
+    background-color: #424242;
+  }
+}
+
+::ng-deep{
+  .mat-form-field-flex{
+    padding: 0 !important;
+  }
+  .mat-form-field-infix{
+    position: relative;
+    box-shadow: none;
+    background-color: #424242;
+  }
+  .mat-form-field-underline{
+    display: none;
+
+  }
+  .mat-form-field-label-wrapper{
+    display: flex;
+    top: -0.7em !important
+  }
+
+  .mat-form-field input{
+    height: 100%;
+  }
+
+  .mat-form-field label{
+    padding-left: 5px !important;
+  }
+}

@@ -1,1 +1,25 @@
-<p style="color: white;">activities works!</p>
+<div class="activity-form-container">
+  <mat-card>
+    <div class="input-field">
+      <app-input-field
+        label="RA do aluno:"
+        placeholder="17236812736">
+      </app-input-field>
+    </div>
+    <div class="input-field">
+      <app-input-field
+        label="Nota:"
+        placeholder="0 - 100">
+      </app-input-field>
+    </div>
+    <div class="input-field">
+      <app-select-field
+        label="Escola:"
+        [listOptions]="listOptions">
+      </app-select-field>
+    </div>
+    <div class="input-field">
+      <app-button buttonText="SALVAR"></app-button>
+    </div>
+  </mat-card>
+</div>

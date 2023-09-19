@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ActivitiesComponent {
 
+  listOptions = [
+    "Escola de Dados",
+    "Escola de Produtos",
+    "Escola de Tecnlogia",
+  ]
 }

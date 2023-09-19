@@ -1,0 +1,8 @@
+@import url('../../../../styles.scss');
+
+.activity-form-container{
+  width: 35%;
+  mat-card{
+    background-color: var(--surface-dark-2);
+  }
+}

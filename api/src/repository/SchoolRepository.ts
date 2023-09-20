@@ -5,7 +5,7 @@ export class SchoolRepository{
 
     schoolDataSource = AppDataSource.getRepository(School)
 
-    findAll(){
+    findAll(): Promise<School[]> {
         return this.schoolDataSource.find({
             relations:{
                 students: true
@@ -13,25 +13,23 @@ export class SchoolRepository{
         })
     }
 
-    findByCnpj(cnpj: string){
+    findById(id: number): Promise<School | undefined> {
         return this.schoolDataSource.findOne({
             where: {
-                cnpj: cnpj
+                id: id
             }
         })
     }
 
-    create(school: School){
+    create(school: School): Promise<School> {
         return this.schoolDataSource.save(school)
     }
 
-    async update(school: School){
-        const schoolToUpdate = await this.schoolDataSource.findOne({ where: {cnpj: school.cnpj}})
-        return this.schoolDataSource.update(school, schoolToUpdate)
+    async updateById(schoolBody: School, id: number): Promise<void> {
+        await this.schoolDataSource.update({ id: id }, schoolBody);
     }
 
-    async delete(school: School){
-        const schoolToUpdate = await this.schoolDataSource.findOne({ where: {cnpj: school.cnpj}})
-        return this.schoolDataSource.delete(schoolToUpdate)
+    async deleteById(id: number): Promise<void>{
+        await this.schoolDataSource.delete({ id: id });
     }
 }

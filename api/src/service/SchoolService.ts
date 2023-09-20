@@ -4,24 +4,24 @@ export class SchoolService {
 
     schoolRepo = new SchoolRepository()
 
-    findAll(){
+    findAll(): Promise<School[]> {
         return this.schoolRepo.findAll()
     }
 
-    findByCnpj(cnpj: string){
-        return this.schoolRepo.findByCnpj(cnpj)
+    findById(id: number): Promise<School | undefined> {
+        return this.schoolRepo.findById(id)
     }
 
-    create(school: School){
+    create(school: School): Promise<School>{
         return this.schoolRepo.create(school)
     }
 
-    update(school: School){
-        return this.schoolRepo.update(school)
+    update(schoolBody: School, id: number): Promise<void>{
+        return this.schoolRepo.updateById(schoolBody, id)
     }
 
-    delete(school: School){
-        return this.schoolRepo.delete(school)
+    delete(id: number): Promise<void>{
+        return this.schoolRepo.deleteById(id)
     }
 
 }

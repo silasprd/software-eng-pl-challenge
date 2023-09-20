@@ -1,11 +1,14 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Activity } from "./Activity";
 import { School } from "./School";
 
 @Entity()
 export class Student {
 
-    @PrimaryColumn({ type: 'varchar', length: 10 })
+    @PrimaryGeneratedColumn()
+    id: number
+    
+    @Column()
     ra: string
 
     @Column()

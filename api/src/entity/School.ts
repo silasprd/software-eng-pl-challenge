@@ -1,11 +1,14 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Student } from "./Student";
 import { TypeSchool } from "../enums/TypeSchool.enum";
 
 @Entity()
 export class School{
 
-    @PrimaryColumn({type: 'varchar', length: 18})
+    @PrimaryGeneratedColumn()
+    id: number
+    
+    @Column()
     cnpj: string
 
     @Column()

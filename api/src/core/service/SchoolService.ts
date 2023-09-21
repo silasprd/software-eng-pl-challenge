@@ -2,20 +2,6 @@ import { CreateSchoolType, UpdateSchoolType } from '../../utils/types/SchoolType
 import { SchoolRepository } from '../repository/SchoolRepository';
 
 class SchoolService {
-
-    public async findById(id: number){
-        try {
-            const schoolFound = await SchoolRepository.findOne({
-                where: {
-                    id: id
-                }
-            })
-            return schoolFound
-        } catch (error) {
-            console.log(error)
-            throw new Error('Error to find one school in service');
-        }
-    }
     
     public async createSchool({cnpj, name, type}: CreateSchoolType){
         try {
@@ -40,9 +26,43 @@ class SchoolService {
         }
     }
 
-    public async deleteById(id: number){
+    public async findSchoolById(id: number){
         try {
-            const schoolFound= await SchoolRepository.findOne({
+            const schoolFound = await SchoolRepository.findOne({
+                where: {
+                    id: id
+                }
+            })
+            return schoolFound
+        } catch (error) {
+            console.log(error)
+            throw new Error('Error to find one school in service');
+        }
+    }
+
+    public async updateSchoolById({cnpj, name, type}: UpdateSchoolType, id: number){
+        try {
+            const schoolToUpdate = await SchoolRepository.findOne({
+                where: {
+                    id: id
+                }
+            })
+
+            schoolToUpdate.cnpj = cnpj
+            schoolToUpdate.name = name
+            if (type) schoolToUpdate.type = type
+            
+            const schoolUpdated = await SchoolRepository.save(schoolToUpdate)
+            return schoolUpdated
+        } catch (error) {
+            console.log(error)
+            throw new Error('Error to update school in service');
+        }
+    }
+
+    public async deleteSchoolById(id: number){
+        try {
+            const schoolFound = await SchoolRepository.findOne({
                 where: {
                     id: id
                 }
@@ -52,26 +72,6 @@ class SchoolService {
         } catch (error) {
             console.log(error)
             throw new Error('Error to delete school in service');
-        }
-    }
-
-    public async updateById({cnpj, name, type}: UpdateSchoolType, id: number){
-        try {
-            const schoolToUpdate= await SchoolRepository.findOne({
-                where: {
-                    id: id
-                }
-            })
-
-            schoolToUpdate.cnpj = cnpj
-            schoolToUpdate.name = name
-            schoolToUpdate.type = type
-            
-            const schoolUpdated = await SchoolRepository.save(schoolToUpdate)
-            return schoolUpdated
-        } catch (error) {
-            console.log(error)
-            throw new Error('Error to update school in service');
         }
     }
 

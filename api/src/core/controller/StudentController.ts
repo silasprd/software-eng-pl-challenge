@@ -1,71 +1,71 @@
 import { Request, Response } from "express";
-import SchoolService from "../service/SchoolService";
+import StudentService from "../service/StudentService";
 
-class SchoolController{
+
+class StudentController{
 
     public async handleCreate(req: Request, res: Response){
         try {
-            const { cnpj, name, type } = req.body;
-            const result = await SchoolService.createSchool({
-                cnpj, 
+            const { ra, name, school } = req.body;
+            const result = await StudentService.createStudent({
+                ra, 
                 name, 
-                type
+                school
             })
             res.status(201).json(result)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error: 'Error to create school in controller' });
+            res.status(500).json({ error: 'Error to create student in controller' });
         }
     }
 
     public async handleFindAll(req: Request, res: Response){
         try {
-            const result = await SchoolService.findAllSchools()
+            const result = await StudentService.findAllStudents()
             res.status(200).json(result)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error: 'Error to find schools in controller'})
+            res.status(500).json({ error: 'Error to find students in controller'})
         }
     }
 
     public async handleFindById(req: Request, res: Response){
         try {
             const { id } = req.params
-            const result = await SchoolService.findSchoolById(parseInt(id))
+            const result = await StudentService.findStudentById(parseInt(id))
             res.status(200).json(result)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error: 'Error to find one school in controller'})
+            res.status(500).json({ error: 'Error to find one student in controller'})
         }
     }
 
     public async handleUpdateById(req: Request, res: Response){
         try {
             const { id } = req.params
-            const { cnpj, name, type } = req.body
-            const result = await SchoolService.updateSchoolById({
-                cnpj,
+            const { ra, name, school } = req.body
+            const result = await StudentService.updateStudentById({
+                ra,
                 name, 
-                type
+                school
             }, parseInt(id))
             res.status(200).json(result)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error: 'Error to update schools in controller'})
+            res.status(500).json({ error: 'Error to find student in controller'})
         }
     }
 
     public async handleDeleteById(req: Request, res: Response){
         try {
             const { id } = req.params
-            const result = await SchoolService.deleteSchoolById(parseInt(id))
+            const result = await StudentService.deleteStudentById(parseInt(id))
             res.status(200).json(result)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error: 'Error to delete school in controller'})
+            res.status(500).json({ error: 'Error to delete student in controller'})
         }
     }
-
 }
 
-export default new SchoolController();
+export default new StudentController();

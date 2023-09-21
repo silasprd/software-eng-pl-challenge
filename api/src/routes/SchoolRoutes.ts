@@ -6,11 +6,6 @@ export function createSchoolRouter(): Router {
 
     const router: Router = express.Router();
 
-    router.get('/:id', async(req, res) => {
-        const school = await SchoolController.handleFindById(req, res);
-        res.json(school)
-    })
-
     router.post('/', async (req, res) => {
         const school = await SchoolController.handleCreate(req, res);
         res.json(school)  
@@ -20,14 +15,19 @@ export function createSchoolRouter(): Router {
         const schools = await SchoolController.handleFindAll(req, res);
         res.json(schools)  
     });
-    
-    router.delete('/:id', async (req, res) => {
-        const school = await SchoolController.handleDeleteById(req, res);
-        res.json(school)  
-    });
+
+    router.get('/:id', async(req, res) => {
+        const school = await SchoolController.handleFindById(req, res);
+        res.json(school)
+    })  
 
     router.put('/:id', async (req, res) => {
         const school = await SchoolController.handleUpdateById(req, res);
+        res.json(school)  
+    });
+    
+    router.delete('/:id', async (req, res) => {
+        const school = await SchoolController.handleDeleteById(req, res);
         res.json(school)  
     });
 

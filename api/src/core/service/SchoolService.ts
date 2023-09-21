@@ -2,18 +2,8 @@ import { CreateSchoolType, UpdateSchoolType } from '../../utils/types/SchoolType
 import { SchoolRepository } from '../repository/SchoolRepository';
 
 class SchoolService {
-    
-    public async createSchool({cnpj, name, type}: CreateSchoolType){
-        try {
-            const createdSchool = await SchoolRepository.create({cnpj, name, type})
-            const savedSchool = await SchoolRepository.save(createdSchool)
-            return savedSchool;
-        } catch (error) {
-            console.log(error)
-            throw new Error('Error to create school in service');
-        }
-    }
-    
+
+        
     public async findAllSchools(){
         try {
             const schoolsFound = await SchoolRepository.find({
@@ -23,6 +13,17 @@ class SchoolService {
         } catch (error) {
             console.log(error)
             throw new Error('Error to list schools in service');
+        }
+    }
+    
+    public async createSchool({cnpj, name, type}: CreateSchoolType){
+        try {
+            const createdSchool = await SchoolRepository.create({cnpj, name, type})
+            const savedSchool = await SchoolRepository.save(createdSchool)
+            return savedSchool;
+        } catch (error) {
+            console.log(error)
+            throw new Error('Error to create school in service');
         }
     }
 

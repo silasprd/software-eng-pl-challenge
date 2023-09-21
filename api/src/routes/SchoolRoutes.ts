@@ -6,14 +6,14 @@ export function createSchoolRouter(): Router {
 
     const router: Router = express.Router();
 
-    router.post('/', async (req, res) => {
-        const school = await SchoolController.handleCreate(req, res);
-        res.json(school)  
-    });
-    
     router.get('/', async (req, res) => {
         const schools = await SchoolController.handleFindAll(req, res);
         res.json(schools)  
+    });
+
+    router.post('/', async (req, res) => {
+        const school = await SchoolController.handleCreate(req, res);
+        res.json(school)  
     });
 
     router.get('/:id', async(req, res) => {

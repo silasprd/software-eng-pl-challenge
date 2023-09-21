@@ -1,11 +1,31 @@
 import { CreateStudentType, UpdateStudentType } from "../../utils/types/StudentTypes";
+import { SchoolRepository } from "../repository/SchoolRepository";
 import { StudentRepository } from "../repository/StudentRepository";
 
 class StudentService{
 
     public async createStudent({ra, name, school}: CreateStudentType){
         try {
-            const createdStudent = await StudentRepository.create({ra, name, school})
+            if (!school || !school.id) {
+                throw new Error('Invalid school data');
+            }
+            const schoolId = school.id
+            const schoolFound = await SchoolRepository.findOne({
+                where: {
+                    id: schoolId
+                }
+            })
+            
+            if(!schoolFound){
+                throw new Error('School not found');
+            }
+
+            const createdStudent = await StudentRepository.create({
+                ra, 
+                name, 
+                school: schoolFound
+            })
+
             const savedStudent = await StudentRepository.save(createdStudent)
             return savedStudent;
         } catch (error) {

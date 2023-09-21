@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { SchoolService } from 'src/app/services/school/school.service';
 
 @Component({
   selector: 'app-home',
@@ -11,17 +12,20 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export class HomeComponent implements AfterViewInit{
 
+  schoolList: any[] = []
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   customPaginatorText = 'Itens por página personalizado';
 
   constructor(
-    public paginatorUnderline: MatPaginatorIntl
+    public paginatorUnderline: MatPaginatorIntl,
+    private schoolService: SchoolService
   ){}
 
   ngAfterViewInit(): void {
     this.paginatorUnderline.itemsPerPageLabel = 'Exibir p/ página'
-    console.log(this.dataSource)
+    this.findAllSchools()
   }
 
   schoolNameControl = new FormControl('')
@@ -34,6 +38,15 @@ export class HomeComponent implements AfterViewInit{
 
   displayedColumnsSchool: string[] = ['cod', 'ra', 'name', 'points'];
   displayedColumnsAll: string[] = ['cod', 'ra', 'school', 'name', 'points'];
+
+  findAllSchools(){
+    this.schoolService.findAllSchools().subscribe({
+      next: (response) => {
+        console.log(response)
+        this.schoolList = response
+      }
+    })
+  }
 
   tableSchoolContent:any[] = [
     {

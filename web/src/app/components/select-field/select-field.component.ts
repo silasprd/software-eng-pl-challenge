@@ -17,6 +17,12 @@ export class SelectFieldComponent {
   @Input()
   label!: string
 
-  @Input() 
+  @Input()
   listOptions!: any
+
+  @Input()
+  labelProp!: any
+
+  @Input()
+  valueProp!: any
 }

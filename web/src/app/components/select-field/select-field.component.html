@@ -5,8 +5,8 @@
         <mat-select [placeholder]="placeholder" [formControl]="control">
 
             <ng-container *ngFor="let option of listOptions">
-                <mat-option [value]="option">
-                    {{option}}
+                <mat-option [value]="option[valueProp]">
+                    {{option[labelProp]}}
                 </mat-option>
             </ng-container>
 

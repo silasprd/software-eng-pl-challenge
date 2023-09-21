@@ -22,6 +22,7 @@ import { ActivitiesComponent } from './core/pages/activities/activities.componen
 import { RankingAllComponent } from './components/ranking/ranking-all/ranking-all.component';
 import { RankingSchoolComponent } from './components/ranking/ranking-school/ranking-school.component';
 import { RankingTopAllComponent } from './components/ranking/ranking-top-all/ranking-top-all.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { RankingTopAllComponent } from './components/ranking/ranking-top-all/ran
     MatCardModule,
     MatSelectModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

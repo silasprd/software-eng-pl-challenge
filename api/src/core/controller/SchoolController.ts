@@ -3,6 +3,16 @@ import SchoolService from "../service/SchoolService";
 
 class SchoolController{
 
+    public async handleFindAll(req: Request, res: Response){
+        try {
+            const result = await SchoolService.findAllSchools()
+            res.status(200).json(result)
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ error: 'Error to find schools in controller'})
+        }
+    }
+
     public async handleCreate(req: Request, res: Response){
         try {
             const { cnpj, name, type } = req.body;
@@ -15,16 +25,6 @@ class SchoolController{
         } catch (error) {
             console.log(error)
             res.status(500).json({ error: 'Error to create school in controller' });
-        }
-    }
-
-    public async handleFindAll(req: Request, res: Response){
-        try {
-            const result = await SchoolService.findAllSchools()
-            res.status(200).json(result)
-        } catch (error) {
-            console.log(error)
-            res.status(500).json({ error: 'Error to find schools in controller'})
         }
     }
 

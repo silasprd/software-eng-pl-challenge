@@ -14,7 +14,9 @@
                     [control]="schoolTypeControl"
                     label="Selecione uma escola: "
                     placeholder="Selecionar..."
-                    [listOptions]="listOptions">
+                    [listOptions]="schoolList"
+                    valueProp="id"
+                    labelProp="type">
                 </app-select-field>
                 <app-button
                     buttonText="PESQUISAR">

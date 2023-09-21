@@ -1,20 +1,31 @@
-import { Router } from "express"
+import express, { Router } from "express"
 import { SchoolController } from "../controller/SchoolController";
 
-export class Routes {
-    private router = Router();
-    private schoolController = new SchoolController();
+export default class Routes {
 
-    constructor(){
+    constructor(private readonly schoolController: SchoolController){
         this.initializeRoutes()
     }
 
+    private router: Router = express.Router();
+
     private initializeRoutes(){
-        this.router.get('/schools', async (req, res) => await this.schoolController.findAll(req, res));
-        this.router.post('/schools', async (req, res) => await this.schoolController.create(req, res));
-        this.router.get('/schools/:cnpj', async (req, res) => await this.schoolController.findByCnpj(req, res));
-        this.router.delete('/schools/:cnpj', async (req, res) => await this.schoolController.delete(req, res));
-        this.router.put('/schools/:cnpj', async (req, res) => await this.schoolController.update(req, res));
+        this.router.get('/schools', async (req, res) => {
+            try {
+                const schools = await this.schoolController.findAll(req, res);
+                res.json(schools)
+            } catch (error) {
+                console.log(error)
+            }
+        });
+        this.router.post('/schools', async (req, res) => {
+            try {
+                const school = await this.schoolController.create(req, res);
+                res.json(school)
+            } catch (error) {
+                console.log(error)
+            }
+        });
     }
 
     getRouter(){

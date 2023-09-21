@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Student } from "./Student";
 import { TypeSchool } from "../enums/TypeSchool.enum";
 
@@ -18,5 +18,6 @@ export class School{
     type: TypeSchool
 
     @OneToMany(() => Student, (student) => student.school, {nullable: true})
+    @JoinColumn()
     students: Student[]
 }

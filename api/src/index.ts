@@ -6,15 +6,11 @@ import { Student } from "./entity/Student"
 import { TypeActivity } from "./enums/TypeActivity.enum"
 import { TypeSchool } from "./enums/TypeSchool.enum"
 import express from "express";
-import { Routes } from "./routes/Routes";
 
 const app = express()
 const port = 3000
 
 AppDataSource.initialize().then(async () => {
-
-    const routes = new Routes();
-    app.use("/", routes.getRouter())
 
     app.listen(port, () => {
         console.log(`Servidor rodando na porta ${port}`);

@@ -3,7 +3,7 @@ import { SchoolService } from "../service/SchoolService";
 
 export class SchoolController{
 
-    schoolService = new SchoolService()
+    constructor(private schoolService: SchoolService){}
 
     public async findAll(req: Request, res: Response){
         const result = this.schoolService.findAll()
@@ -17,8 +17,8 @@ export class SchoolController{
     }
 
     public async findByCnpj(req: Request, res: Response){
-        const { cnpj } = req.params
-        const school = await this.schoolService.findByCnpj(cnpj)
+        const { id } = req.params
+        const school = await this.schoolService.findById(parseInt(id))
         if(school){
             res.json(school)
         } else {
@@ -27,14 +27,14 @@ export class SchoolController{
     }
 
     public async delete(req: Request, res: Response){
-        const { cnpj } = req.params
-        const school = await this.schoolService.delete(cnpj)
+        const { id } = req.params
+        const school = await this.schoolService.deleteById(parseInt(id))
         res.status(200).json(school)
     }
 
     public async update(req: Request, res: Response){
-        const { cnpj } = req.params
-        const school = await this.schoolService.update(req.body, cnpj)
+        const { id } = req.params
+        const school = await this.schoolService.updateById(req.body, parseInt(id))
         res.status(200).json(school)
     }
 

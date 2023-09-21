@@ -1,9 +1,9 @@
-import { AppDataSource } from "../data-source";
+import { Repository } from "typeorm";
 import { School } from "../entity/School";
 
 export class SchoolRepository{
 
-    schoolDataSource = AppDataSource.getRepository(School)
+    constructor(private readonly schoolDataSource: Repository<School>){}
 
     findAll(): Promise<School[]> {
         return this.schoolDataSource.find({

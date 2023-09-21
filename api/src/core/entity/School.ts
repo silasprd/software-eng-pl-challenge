@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Student } from "./Student";
-import { TypeSchool } from "../enums/TypeSchool.enum";
+import { TypeSchool } from "../../utils/enums/TypeSchool.enum";
 
 @Entity()
 export class School{

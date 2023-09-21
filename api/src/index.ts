@@ -3,15 +3,14 @@ import 'reflect-metadata';
 import express from "express";
 import { createSchoolRouter } from "./routes/Routes";
 
-
 const app = express()
 const port = 3000
+app.use("/", express.json());
 
 AppDataSource.initialize().then(async () => {
 
-    const schoolRouter = createSchoolRouter();
-    
-    app.use("/", schoolRouter)
+    const schoolRoutes = createSchoolRouter()
+    app.use("/schools", schoolRoutes)
 
     app.listen(port, () => {
         console.log(`Servidor rodando na porta ${port}`);

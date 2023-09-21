@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { TypeActivity } from "../enums/TypeActivity.enum";
+import { TypeActivity } from "../../utils/enums/TypeActivity.enum";
 import { Student } from "./Student";
 
 @Entity()

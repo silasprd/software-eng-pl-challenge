@@ -5,16 +5,21 @@ export class SchoolController{
 
     constructor(private schoolService: SchoolService){}
 
+    public async create(req: Request, res: Response){
+        try {
+            const school = req.body
+            const createdSchool = await this.schoolService.create(school)
+            res.status(201).json(createdSchool)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     public async findAll(req: Request, res: Response){
         const result = this.schoolService.findAll()
         res.json(result)
     }
 
-    public async create(req: Request, res: Response){
-        const school = req.body
-        const createdSchool = this.schoolService.create(school)
-        res.status(201).json(createdSchool)
-    }
 
     public async findByCnpj(req: Request, res: Response){
         const { id } = req.params

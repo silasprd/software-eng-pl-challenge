@@ -2,9 +2,19 @@ import { SchoolRepository } from '../repository/SchoolRepository';
 import { School } from './../entity/School';
 
 export class SchoolService {
-
-    constructor(private schoolRepo: SchoolRepository){}
-
+    
+    constructor(
+        private schoolRepo: SchoolRepository    
+    ){}
+    
+    async create(school: School): Promise<School>{
+        try {
+            return await this.schoolRepo.create(school)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
     findAll(): Promise<School[]> {
         return this.schoolRepo.findAll()
     }
@@ -13,9 +23,6 @@ export class SchoolService {
         return this.schoolRepo.findById(id)
     }
 
-    create(school: School): Promise<School>{
-        return this.schoolRepo.create(school)
-    }
 
     updateById(schoolBody: School, id: number): Promise<void>{
         return this.schoolRepo.updateById(schoolBody, id)

@@ -4,7 +4,7 @@ import { StudentRepository } from "../repository/StudentRepository";
 
 class StudentService{
 
-    public async createStudent({ra, name, school}: CreateStudentType){
+    public async createStudent({ra, name, totalScore, school}: CreateStudentType){
         try {
             if (!school || !school.id) {
                 throw new Error('Invalid school data');
@@ -20,9 +20,12 @@ class StudentService{
                 throw new Error('School not found');
             }
 
+            totalScore = 0
+
             const createdStudent = await StudentRepository.create({
                 ra, 
                 name, 
+                totalScore: totalScore,
                 school: schoolFound
             })
 
@@ -51,7 +54,8 @@ class StudentService{
             const studentFound = await StudentRepository.findOne({
                 where: {
                     id: id
-                }
+                },
+                relations: ["school","activities"]
             })
             return studentFound
         } catch (error) {
@@ -108,6 +112,10 @@ class StudentService{
             console.log(error)
             throw new Error('Error to find students by school in service');
         }
+    }
+
+    public async calculatePoints(){
+
     }
 
 }

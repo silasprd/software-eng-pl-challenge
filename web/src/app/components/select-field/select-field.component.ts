@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 export class SelectFieldComponent {
 
   @Input()
-  control!: FormControl
+  control = new FormControl("")
 
   @Input()
   placeholder!: string
@@ -25,4 +25,17 @@ export class SelectFieldComponent {
 
   @Input()
   valueProp!: any
+
+  selectedValue: any;
+
+  constructor() {
+    this.selectedValue = this.control.value;
+  }
+
+  @Output()
+  selectionChange = new EventEmitter<any>();
+
+  onSelectionChange(event: any) {
+    this.selectionChange.emit(event.value);
+  }
 }

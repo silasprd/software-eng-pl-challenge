@@ -1,8 +1,8 @@
-<!-- <div class="select-container">
+<div class="select-container">
     <mat-form-field>
         <mat-label>{{label}}</mat-label>
 
-        <mat-select [placeholder]="placeholder" [formControl]="control">
+        <mat-select [placeholder]="placeholder" [formControl]="control" [ngModel]="selectedValue">
 
             <ng-container *ngFor="let option of listOptions">
                 <mat-option [value]="option[valueProp]">
@@ -12,4 +12,4 @@
 
         </mat-select>
     </mat-form-field>
-</div> -->
+</div>

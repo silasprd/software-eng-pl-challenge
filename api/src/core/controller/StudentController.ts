@@ -6,10 +6,11 @@ class StudentController{
 
     public async handleCreate(req: Request, res: Response){
         try {
-            const { ra, name, school } = req.body;
+            const { ra, name, totalScore, school } = req.body;
             const result = await StudentService.createStudent({
                 ra, 
                 name, 
+                totalScore,
                 school
             })
             res.status(201).json(result)

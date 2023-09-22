@@ -3,6 +3,7 @@ import { School } from "../../core/entity/School"
 export type CreateStudentType = {
     ra: string
     name: string
+    totalScore: number
     school?: School
 }
 

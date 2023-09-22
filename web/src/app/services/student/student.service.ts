@@ -15,6 +15,6 @@ export class StudentService {
   }
 
   findStudentsBySchool(idSchool: number){
-    return this.httpClient.get<any[]>(`http://localhost:3000/students/${idSchool}`)
+    return this.httpClient.get<any[]>(`http://localhost:3000/students/school/${idSchool}`)
   }
 }

@@ -1,20 +1,27 @@
-<mat-card class="ranking-school-card">
+<div class="ranking-school-container">
+  <mat-card-content class="search-card-content">
+    <form [formGroup]="selectSchoolForm">
+      <app-select-field
+        [control]="schoolTypeControl"
+        label="Selecione uma escola: "
+        placeholder="Selecionar..."
+        [listOptions]="schoolList"
+        valueProp="id"
+        labelProp="type"
+        (selectionChange)="onSchoolSelectionChange($event)">
+      </app-select-field>
+      <app-button buttonText="PESQUISAR" (click)="selectSchool()"></app-button>
+    </form>
+  </mat-card-content>
+  <mat-card class="ranking-school-card">
     <mat-card-header>
-        <mat-card-title class="search-card-title">
-            <h5>Escola de Dados</h5>
-        </mat-card-title>
+      <mat-card-title class="search-card-title">
+        <h5>Escola de Dados</h5>
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content class="ranking-card-content">
-        <mat-table #table [dataSource]="dataList" class="school-table">
-            <div *ngIf="columns | async as cols">
-                <ng-container *ngFor="let column of cols" [matColumnDef]="column.columnDef">
-                    <mat-header-cell *matHeaderCellDef>{{column.header}}</mat-header-cell>
-                    <mat-cell *matCellDef="let row">{{column.cell(row)}}</mat-cell> 
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </div>
-        </mat-table>
+      <app-table [dataList]="studentBySchoolList" [columns]="studentColumns">
+      </app-table>
     </mat-card-content>
-</mat-card>
+  </mat-card>
+</div>

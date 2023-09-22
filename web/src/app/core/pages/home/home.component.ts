@@ -35,15 +35,12 @@ export class HomeComponent implements AfterViewInit {
     // })
   }
 
-  selectedSchoolId: number = 2
+  selectedSchoolId: number = 1
 
   ngAfterViewInit(): void {
     this.paginatorUnderline.itemsPerPageLabel = 'Exibir p/ página'
-    this.findAllSchools()
-    this.findAllStudents()
-    this.findStudentsBySchool(this.selectedSchoolId)
   }
-  
+
   displayedColumnsSchool: string[] = ['id', 'ra', 'name', 'points'];
   displayedColumnsAll: string[] = ['cod', 'ra', 'school', 'name', 'points'];
 
@@ -57,6 +54,11 @@ export class HomeComponent implements AfterViewInit {
       columnDef: 'ra',
       header: 'RA',
       cell: (element: any) => `${element.ra}`
+    },
+    {
+      columnDef: 'totalScore',
+      header: 'Pontos',
+      cell: (element: any) => `${element.totalScore}`
     }
   ]
 )
@@ -81,8 +83,7 @@ export class HomeComponent implements AfterViewInit {
   findStudentsBySchool(idSchool: number) {
     this.studentService.findStudentsBySchool(idSchool).subscribe({
       next: (response) => {
-        this.studentBySchoolList = response
-        console.log(response)
+        this.studentBySchoolList = response.sort((a, b) => b.totalScore - a.totalScore)
       }
     })
   }

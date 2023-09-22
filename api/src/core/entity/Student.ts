@@ -13,6 +13,9 @@ export class Student {
 
     @Column()
     name: string
+    
+    @Column()
+    totalScore: number
 
     @OneToMany(() => Activity, (activity) => activity.student, {nullable: true})
     activities: Activity[]

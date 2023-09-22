@@ -1,0 +1,18 @@
+<mat-table #table [dataSource]="dataList" class="school-table">
+  <div *ngIf="columns | async as cols">
+    <ng-container matColumnDef="ranking" >
+      <mat-header-cell *matHeaderCellDef>Pos.</mat-header-cell>
+      <mat-cell *matCellDef="let row; let i = index">
+        {{i+1}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container *ngFor="let column of cols" [matColumnDef]="column.columnDef">
+      <mat-header-cell *matHeaderCellDef>{{ column.header }}</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ column.cell(row) }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </div>
+</mat-table>

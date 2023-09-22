@@ -27,7 +27,8 @@ class ActivityService {
             const studentFound = await StudentRepository.findOne({
                 where: {
                     id: studentId
-                }
+                },
+                relations: ["activities"] 
             });
 
             if(!studentFound){
@@ -42,6 +43,15 @@ class ActivityService {
             });
 
             const savedActivity = await ActivityRepository.save(createdActivity)
+
+            if(!studentFound.activities) studentFound.activities = []
+
+            studentFound.activities.push(savedActivity);
+
+            studentFound.totalScore = studentFound.activities.reduce((total, activity) => total + activity.points, 0)
+
+            await StudentRepository.save(studentFound)
+
             return savedActivity
         } catch (error) {
             console.log(error)

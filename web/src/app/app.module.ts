@@ -23,6 +23,7 @@ import { RankingAllComponent } from './components/ranking/ranking-all/ranking-al
 import { RankingSchoolComponent } from './components/ranking/ranking-school/ranking-school.component';
 import { RankingTopAllComponent } from './components/ranking/ranking-top-all/ranking-top-all.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     ActivitiesComponent,
     RankingAllComponent,
     RankingSchoolComponent,
-    RankingTopAllComponent
+    RankingTopAllComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

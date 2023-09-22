@@ -95,6 +95,21 @@ class StudentService{
         }
     }
 
+    public async findStudentsBySchool(idSchool: number){
+        try {
+            const schoolFound = await SchoolRepository.findOne({
+                where: {
+                    id: idSchool
+                },
+                relations: ["students"]
+            })
+            return schoolFound.students
+        } catch (error) {
+            console.log(error)
+            throw new Error('Error to find students by school in service');
+        }
+    }
+
 }
 
 export default new StudentService();

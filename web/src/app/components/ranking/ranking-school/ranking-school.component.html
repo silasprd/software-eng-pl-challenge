@@ -5,22 +5,16 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-content class="ranking-card-content">
-        <mat-table [dataSource]="dataSource" class="school-table">
-            <ng-container *ngFor="let column of displayedColumns;" [matColumnDef]="column" >
-                <th mat-header-cell *matHeaderCellDef>
-                    <span>
-                        {{column}}
-                    </span>
-                </th>
-                <td mat-cell *matCellDef="let element">
-                    <span>
-                        {{element[column]}}
-                    </span> 
-                </td>
-            </ng-container>
+        <mat-table #table [dataSource]="dataList" class="school-table">
+            <div *ngIf="columns | async as cols">
+                <ng-container *ngFor="let column of cols" [matColumnDef]="column.columnDef">
+                    <mat-header-cell *matHeaderCellDef>{{column.header}}</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{column.cell(row)}}</mat-cell> 
+                </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </div>
         </mat-table>
     </mat-card-content>
 </mat-card>

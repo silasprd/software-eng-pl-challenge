@@ -1,5 +1,6 @@
 import { CreateActivityType, UpdateActivityType } from "../../utils/types/ActivityType";
 import { ActivityRepository } from "../repository/ActivityRepository";
+import { StudentRepository } from "../repository/StudentRepository";
 
 class ActivityService {
 
@@ -23,7 +24,7 @@ class ActivityService {
             }
 
             const studentId = student.id
-            const studentFound = await ActivityRepository.findOne({
+            const studentFound = await StudentRepository.findOne({
                 where: {
                     id: studentId
                 }

@@ -8,14 +8,8 @@ import { createActivityRouter } from "./routes/ActivityRoutes";
 
 const app = express()
 const port = 3000
-app.use("/", express.json());
-const corsOptions = {
-    origin: '*', 
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, 
-    optionsSuccessStatus: 204, 
-};
-app.use(cors(corsOptions))
+app.use("/", express());
+app.use(cors())
 
 AppDataSource.initialize().then(async () => {
 

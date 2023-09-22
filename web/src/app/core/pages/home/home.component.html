@@ -4,30 +4,31 @@
     </figure>
     <div class="search-box">
         <mat-card class="search-card">
-            <mat-card-header>
+            <!-- <mat-card-header>
                 <mat-card-title class="search-card-title">
                     <h3>Selecionar escola</h3>
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content class="search-card-content">
-                <app-select-field
-                    [control]="schoolTypeControl"
-                    label="Selecione uma escola: "
-                    placeholder="Selecionar..."
-                    [listOptions]="schoolList"
-                    valueProp="id"
-                    labelProp="type">
-                </app-select-field>
-                <app-button
-                    buttonText="PESQUISAR">
-                </app-button>
-            </mat-card-content>
+                <form [formGroup]="selectSchoolForm">
+                    <app-select-field
+                        formControlName="schoolTypeControl"
+                        label="Selecione uma escola: "
+                        placeholder="Selecionar..."
+                        [listOptions]="schoolList"
+                        valueProp="id"
+                        labelProp="type">
+                    </app-select-field>
+                    <app-button
+                        buttonText="PESQUISAR">
+                    </app-button>
+                </form>
+            </mat-card-content> -->
         </mat-card>
 
         <app-ranking-school
-            [tableContent]="tableSchoolContent"
-            [dataSource]="dataSource"
-            [displayedColumns]="displayedColumnsSchool">
+            [dataList]="studentList"
+            [columns]="studentColumns">
         </app-ranking-school>
     </div>
     <div class="ranking-all">

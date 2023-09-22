@@ -42,4 +42,10 @@
     .mat-paginator-container{
          flex-wrap: unset !important;
     }
+    .mat-header-cell{
+        background-color: var(--bg-dark);
+    }
+    .mat-header-row{
+        min-height: 35px !important;
+    }
 }

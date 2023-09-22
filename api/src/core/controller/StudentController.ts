@@ -66,6 +66,17 @@ class StudentController{
             res.status(500).json({ error: 'Error to delete student in controller'})
         }
     }
+
+    public async handleFindBySchool(req: Request, res: Response){
+        try {
+            const { idSchool } = req.params
+            const result = await StudentService.findStudentsBySchool(parseInt(idSchool))
+            res.status(200).json(result)
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ error: 'Error to find students by school in controller'})
+        }
+    }
 }
 
 export default new StudentController();

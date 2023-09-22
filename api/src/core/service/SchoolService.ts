@@ -32,7 +32,8 @@ class SchoolService {
             const schoolFound = await SchoolRepository.findOne({
                 where: {
                     id: id
-                }
+                },
+                relations: ["students"]
             })
             return schoolFound
         } catch (error) {

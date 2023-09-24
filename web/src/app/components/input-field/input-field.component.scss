@@ -1,6 +1,7 @@
 @import url('../../../styles.scss');
 
 mat-form-field{
+  width: 100%;
   input{
     background-color: #424242;
   }
@@ -14,6 +15,7 @@ mat-form-field{
     position: relative;
     box-shadow: none;
     background-color: #424242;
+    width: 100% !important;
   }
   .mat-form-field-underline{
     display: none;

@@ -1,9 +1,12 @@
+.mat-form-field{
+    width: 100%;
+}
 ::ng-deep{
     .mat-form-field-infix{
         background-color: var(--surface-dark-2);
         border: none;
         padding: 12px !important;
-        width: 100%;
+        width: 100% !important;
         box-shadow: 1px 1px 2px 0 #FFFFFF15;
         border-radius: 5px;
     }

@@ -1,25 +1,36 @@
 <div class="activity-form-container">
   <mat-card>
-    <div class="input-field">
-      <app-input-field
-        label="RA do aluno:"
-        placeholder="17236812736">
-      </app-input-field>
-    </div>
-    <div class="input-field">
-      <app-input-field
-        label="Nota:"
-        placeholder="0 - 100">
-      </app-input-field>
-    </div>
-    <div class="input-field">
-      <app-select-field
-        label="Escola:"
-        [listOptions]="listOptions">
-      </app-select-field>
-    </div>
-    <div class="input-field">
-      <app-button buttonText="SALVAR"></app-button>
-    </div>
+    <form action="" [formGroup]="selectSchoolForm">  
+      <div class="input-field">
+        <app-input-field
+          label="RA do aluno:"
+          placeholder="17236812736"
+          [control]="studentControl">
+        </app-input-field>
+      </div>
+      <div class="input-field">
+        <app-input-field
+          label="Nota:"
+          placeholder="0 - 100"
+          [control]="scoreControl">
+        </app-input-field>
+      </div>
+      <div class="input-field">
+        <app-select-field
+        [control]="typeControl"
+        label="Tipo da atividade: "
+        placeholder="Selecionar..."
+        [listOptions]="listOptionsEnum"
+        [isEnum]="true"
+        (selectionChange)="onSchoolSelectionChange($event)">
+        </app-select-field>
+      </div>
+      <div class="input-field-text-area">
+        <textarea placeholder="Descrição:" [formControl]="describeControl"></textarea>
+      </div>
+      <div class="input-field">
+        <app-button buttonText="SALVAR" (click)="createActivity()"></app-button>
+      </div>
+    </form>
   </mat-card>
 </div>

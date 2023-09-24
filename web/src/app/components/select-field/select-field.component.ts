@@ -26,6 +26,9 @@ export class SelectFieldComponent {
   @Input()
   valueProp!: any
 
+  @Input()
+  isEnum!: boolean
+
   selectedValue: any;
 
   constructor() {

@@ -78,6 +78,17 @@ class StudentController{
             res.status(500).json({ error: 'Error to find students by school in controller'})
         }
     }
+
+    public async handleFindByRa(req: Request, res: Response){
+        try {
+            const { raStudent } = req.params
+            const result = await StudentService.findStudentByRa(raStudent)
+            res.status(200).json(result)
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ error: 'Error to find one student by ra in controller'})
+        }
+    }
 }
 
 export default new StudentController();

@@ -1,9 +1,20 @@
-.ranking-school-card{
-    width: fit-content;
-    background-color: var(--surface-dark);
-    .search-card-title{
-        h5{
-            margin: 5px 0 10px 0 !important;
+.ranking-school-container{
+    display: flex !important;
+    .ranking-school-card{
+        width: fit-content;
+        background-color: var(--surface-dark);
+        .search-card-title{
+            h5{
+                margin: 0 0 10px 0 !important;
+            }
+        }
+        .search-card-content{
+            .select-school-form{
+                display: flex !important;
+                .select-school-button{
+                    margin-left: 10px;
+                }
+            }
         }
     }
 }

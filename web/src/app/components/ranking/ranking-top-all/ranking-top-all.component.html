@@ -5,28 +5,10 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-content class="ranking-card-content">
-        <mat-table [dataSource]="dataSource" class="school-table">
-            <ng-container *ngFor="let column of displayedColumns;" [matColumnDef]="column" >
-                <th mat-header-cell *matHeaderCellDef>
-                    <span>
-                        {{column}}
-                    </span>
-                </th>
-                <td mat-cell *matCellDef="let element">
-                    <span>
-                        {{element[column]}}
-                    </span> 
-                </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </mat-table>
-        <mat-paginator *ngIf="!hidePaginator"
-            [pageSizeOptions]="[6, 12, 24]"
-            showFirstLastButtons 
-            aria-label="Select page of periodic elements">
-        </mat-paginator>
+        <app-table
+            [dataList]="studentList"
+            [columns]="studentColumns">
+        </app-table>
     </mat-card-content>
 </mat-card>
 

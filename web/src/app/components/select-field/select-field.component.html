@@ -4,11 +4,21 @@
 
         <mat-select [placeholder]="placeholder" [formControl]="control" [ngModel]="selectedValue">
 
-            <ng-container *ngFor="let option of listOptions">
-                <mat-option [value]="option[valueProp]">
-                    {{option[labelProp]}}
-                </mat-option>
-            </ng-container>
+            <div *ngIf="!isEnum">
+                <ng-container *ngFor="let option of listOptions">
+                    <mat-option [value]="option[valueProp]">
+                        {{option[labelProp]}}
+                    </mat-option>
+                </ng-container>
+            </div>
+
+            <div *ngIf="isEnum">
+                <ng-container *ngFor="let option of listOptions">
+                    <mat-option [value]="option">
+                        {{option}}
+                    </mat-option>
+                </ng-container>
+            </div>
 
         </mat-select>
     </mat-form-field>

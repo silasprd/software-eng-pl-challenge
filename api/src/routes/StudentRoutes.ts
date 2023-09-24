@@ -11,6 +11,8 @@ export function createStudentRouter(): Router {
 
     router.get('/:id', async (req, res) => await StudentController.handleFindById(req, res));
 
+    router.get('/ra/:raStudent', async (req, res) => await StudentController.handleFindByRa(req, res));
+
     router.get('/school/:idSchool', async (req, res) => await StudentController.handleFindBySchool(req, res));
 
     router.put('/:id', async (req, res) => await StudentController.handleUpdateById(req, res));

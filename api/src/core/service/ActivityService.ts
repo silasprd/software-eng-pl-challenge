@@ -19,14 +19,14 @@ class ActivityService {
 
     public async createActivity({describe, points, type, student}: CreateActivityType){
         try {
-            if (!student || !student.id) {
+            if (!student || !student.ra) {
                 throw new Error('Invalid student data');
             }
 
-            const studentId = student.id
+            const studentRa = student.ra
             const studentFound = await StudentRepository.findOne({
                 where: {
-                    id: studentId
+                    ra: studentRa
                 },
                 relations: ["activities"] 
             });

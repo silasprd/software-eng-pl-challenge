@@ -114,8 +114,18 @@ class StudentService{
         }
     }
 
-    public async calculatePoints(){
-
+    async findStudentByRa(raStudent: string){
+        try {
+            const studentFound = await StudentRepository.findOne({
+                where: {
+                    ra: raStudent
+                },
+                relations: ["school"]
+            })
+            return studentFound
+        } catch (error) {
+            
+        }
     }
 
 }

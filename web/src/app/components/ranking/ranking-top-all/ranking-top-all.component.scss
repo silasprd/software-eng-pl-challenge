@@ -5,41 +5,5 @@
         h5{
             margin: 10px 0 !important;
         }
-    }
-    .ranking-card-content{
-        mat-table{
-            background-color: var(--surface-dark-2);
-            th, td{
-                width: 100%;
-                text-align: start;
-                padding: 0 20px;
-                white-space: nowrap;
-                height: 35px !important;
-            }
-            tr{
-                height: 35px !important;
-            }
-            td span, th span{
-                display: flex; 
-                height: 100%;
-                align-items: center;
-            }
-            th{
-                background-color: var(--bg-dark) !important;
-            }
-            td:last-child{
-                color: var(--primary-dark);
-            }
-        }
-        // mat-paginator{
-        //     background-color: var(--surface-dark-2) !important;
-        // }
-    }
-}
-
-
-::ng-deep{
-    .mat-paginator-container{
-         flex-wrap: unset !important;
-    }
+    }  
 }

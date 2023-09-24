@@ -4,5 +4,18 @@
   width: 35%;
   mat-card{
     background-color: var(--surface-dark-2);
+    form {
+      width: 70%;
+      .input-field-text-area{
+        textarea{
+          background-color: #424242;
+          width: 98%;
+          min-height: 70px;
+          border-radius: 7px;
+          color: white;
+          margin-bottom: 15px;
+        }
+      }
+    }
   }
 }

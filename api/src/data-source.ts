@@ -7,9 +7,9 @@ import { Student } from "./core/entity/Student"
 export const AppDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
-    port: 5171,
+    port: 3306,
     username: "root",
-    password: "TelLink1020",
+    password: "root",
     database: "dnc",
     synchronize: true,
     logging: false,

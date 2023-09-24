@@ -31,7 +31,7 @@ export class RankingSchoolComponent implements OnInit{
   ngOnInit(): void {
     // this.dataList.paginator = this.paginator;
     this.findAllSchools()
-    // this.findStudentsBySchool(this.selectedSchoolId)
+    this.findStudentsBySchool(this.selectedSchoolId)
     this.buildForm()
   }
 

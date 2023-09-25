@@ -7,7 +7,6 @@ import { createStudentRouter } from "./routes/StudentRoutes";
 import { createActivityRouter } from "./routes/ActivityRoutes";
 import SchoolDataMocked from "./data-mocked/SchoolDataMocked";
 import StudentDataMocked from "./data-mocked/StudentDataMocked";
-import ActivityDataMocked from "./data-mocked/ActivityDataMocked";
 
 const app = express()
 const port = 3000

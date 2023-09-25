@@ -24,6 +24,9 @@ import { RankingSchoolComponent } from './components/ranking/ranking-school/rank
 import { RankingTopAllComponent } from './components/ranking/ranking-top-all/ranking-top-all.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './components/table/table.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -52,7 +55,11 @@ import { TableComponent } from './components/table/table.component';
     MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    SocketIoModule.forRoot(config)
+  ],
+  exports: [
+    SocketIoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

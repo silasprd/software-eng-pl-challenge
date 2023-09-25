@@ -8,8 +8,17 @@ import { createActivityRouter } from "./routes/ActivityRoutes";
 
 const app = express()
 const port = 3000
+const http = require('http');
+const setupWebSocket = require('./websocket');
 app.use("/", express.json());
 app.use(cors())
+
+const server = http.createServer(app);
+const io = setupWebSocket(server);
+
+io.on('connection', (socket) => {
+  console.log('Cliente conectado ao WebSocket');
+});
 
 AppDataSource.initialize().then(async () => {
 
@@ -21,8 +30,8 @@ AppDataSource.initialize().then(async () => {
     app.use("/students", studentRoutes)
     app.use("/activities", activityRoutes)
 
-    app.listen(port, () => {
-        console.log(`Servidor rodando na porta ${port}`);
+    server.listen(port, () => {
+        console.log(`Servidor Express e Socket.io rodando na porta ${port}`);
     })
 
 }).catch(error => console.log(error))

@@ -11,6 +11,9 @@
         .search-card-content{
             .select-school-form{
                 display: flex !important;
+                app-select-field{
+                    width: 50%;
+                }
                 .select-school-button{
                     margin-left: 10px;
                 }

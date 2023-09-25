@@ -4,6 +4,8 @@ import { StudentRepository } from "../repository/StudentRepository";
 
 class ActivityService {
 
+    io = require('../../websocket.ts');
+
     
     public async findAllActivities(){
         try {
@@ -51,6 +53,8 @@ class ActivityService {
             studentFound.totalScore = studentFound.activities.reduce((total, activity) => total + activity.points, 0)
 
             await StudentRepository.save(studentFound)
+
+            this.io.emit('updateTotalScore', { studentId: studentFound.id, totalScore: studentFound.totalScore });
 
             return savedActivity
         } catch (error) {

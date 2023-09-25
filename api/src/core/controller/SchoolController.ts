@@ -15,11 +15,12 @@ class SchoolController{
 
     public async handleCreate(req: Request, res: Response){
         try {
-            const { cnpj, name, type } = req.body;
+            const { cnpj, name, type, students } = req.body;
             const result = await SchoolService.createSchool({
                 cnpj, 
                 name, 
-                type
+                type,
+                students
             })
             res.status(201).json(result)
         } catch (error) {

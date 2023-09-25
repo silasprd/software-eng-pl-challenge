@@ -107,6 +107,7 @@ class StudentService{
                 },
                 relations: ["students"]
             })
+            if (!schoolFound.students) schoolFound.students = []
             return schoolFound.students
         } catch (error) {
             console.log(error)

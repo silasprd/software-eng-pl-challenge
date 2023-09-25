@@ -19,7 +19,6 @@ import { ButtonComponent } from './components/button/button.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './core/pages/home/home.component';
 import { ActivitiesComponent } from './core/pages/activities/activities.component';
-import { RankingAllComponent } from './components/ranking/ranking-all/ranking-all.component';
 import { RankingSchoolComponent } from './components/ranking/ranking-school/ranking-school.component';
 import { RankingTopAllComponent } from './components/ranking/ranking-top-all/ranking-top-all.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,7 +33,6 @@ import { TableComponent } from './components/table/table.component';
     ButtonComponent,
     HomeComponent,
     ActivitiesComponent,
-    RankingAllComponent,
     RankingSchoolComponent,
     RankingTopAllComponent,
     TableComponent

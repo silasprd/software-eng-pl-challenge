@@ -55,10 +55,14 @@ export class ActivitiesComponent implements OnInit {
 
     this.activityService.createActivity(createActivity).subscribe({
       next: (response) => {
-        console.log(response)
+        window.alert("Atividade cadastrada com sucesso!")
       },
       error: (error) => {
+        window.alert("Erro ao cadastrar atividade, revise as informações!")
         console.log(error)
+      },
+      complete: () =>{
+        location.reload()
       }
     })
   }

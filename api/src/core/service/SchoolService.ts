@@ -16,11 +16,14 @@ class SchoolService {
         }
     }
     
-    public async createSchool({cnpj, name, type}: CreateSchoolType){
+    public async createSchool({cnpj, name, type, students}: CreateSchoolType){
         try {
+
             const createdSchool = await SchoolRepository.create({cnpj, name, type})
             const savedSchool = await SchoolRepository.save(createdSchool)
+            
             return savedSchool;
+            
         } catch (error) {
             console.log(error)
             throw new Error('Error to create school in service');
